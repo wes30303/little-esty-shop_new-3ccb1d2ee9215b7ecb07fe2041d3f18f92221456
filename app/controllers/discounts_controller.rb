@@ -9,11 +9,16 @@ class DiscountsController < ApplicationController
   end
 
   def create
-    Discount.create(precent: params[:precent],
-                     amount: params[:amount],
-                     merchant_id: params[:merchant_id])
-                     flash.notice = 'Discount Has Been Created!'
-    redirect_to "/merchants/#{params[:merchant_id]}/discounts"
+    merchant = Merchant.find(params[:merchant_id])
+    discount = merchant.discounts.new(precent: params[:precent],
+       amount: params[:amount])
+    if discount.save
+              flash.notice = 'Discount Has Been Created!'
+               redirect_to "/merchants/#{params[:merchant_id]}/discounts"
+      else
+        flash.notice = 'Discount Has Not Been Created!'
+        redirect_to "/merchants/#{params[:merchant_id]}/discounts/new"
+      end
   end
 
   def destroy
@@ -34,13 +39,18 @@ class DiscountsController < ApplicationController
 
   def update
     @merchant = Merchant.find(params[:merchant_id])
-    @discount.update(discount_params)
-      flash.notice = "Succesfully Updated discount Info!"
-    redirect_to "/merchants/#{params[:merchant_id]}/discounts"
+    @discount = Discount.find(params[:id])
+      if @discount.update(discount_params)
+        redirect_to "/merchants/#{params[:merchant_id]}/discounts"
+        flash.notice = "Succesfully Updated discount Info!"
+      else
+        redirect_to "/merchants/#{params[:merchant_id]}/discounts/#{@discount.id}/edit"
+        flash.notice = "Please Enter Valid Information!"
+      end
   end
 
   def discount_params
-    params.require(:discounts).permit(:precent, :amount, :merchant_id)
+    params.permit(:precent, :amount, :merchant_id)
   end
 
 end

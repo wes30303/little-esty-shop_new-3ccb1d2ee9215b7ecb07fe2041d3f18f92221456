@@ -66,7 +66,7 @@ RSpec.describe 'Discounts Show Page' do
     invoice_item4 = InvoiceItem.create!(quantity: 100, unit_price: 1000, status: 'pending', item_id: item4.id, invoice_id: invoice4.id)
     invoice_item5 = InvoiceItem.create!(quantity: 100, unit_price: 1000, status: 'shipped', item_id: item5.id, invoice_id: invoice5.id)
 
-    discount1 = Discount.create!(precent: 20.00, amount: 10, merchant_id: merchant1.id)
+    discount1 = Discount.create!(precent: 29, amount: 10, merchant_id: merchant1.id)
     discount2 = Discount.create!(precent: 10.00, amount: 5, merchant_id: merchant1.id)
     discount3 = Discount.create!(precent: 5.00, amount: 3 ,merchant_id: merchant2.id)
 
@@ -79,8 +79,7 @@ RSpec.describe 'Discounts Show Page' do
 
     expect(page).to have_content(55)
     expect(page).to have_content(27)
-    expect(page).to_not have_content(20)
-    expect(page).to_not have_content(10)
+    expect(page).to_not have_content(29)
 
   end
 end
