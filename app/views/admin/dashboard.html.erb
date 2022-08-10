@@ -1,0 +1,23 @@
+<h1>Admin Dashboard</h1>
+
+<p><%= link_to 'Admin Merchants Index', '/admin/merchants' %></p>
+<p><%= link_to 'Admin Invoices Index', '/admin/invoices' %></p>
+
+<h3>Incomplete Invoices</h3>
+  
+  <div id="incomplete_invoices">
+  <% @invoices.incomplete_invoices.each do |invoice| %>
+    <p>Invoice #<%= link_to "#{invoice.id}", "/admin/invoices/#{invoice.id}" %>
+    <br>
+    <%= invoice.created_at.strftime("Date invoice created: %A, %B %d, %Y") %>
+    </p>
+  <% end %>
+  </div>
+ 
+<h2>Top 5 Customers by Total Number of Succesful Transactions:</h2>
+  <% Customer.top_five_by_transaction_count.each do |customer| %>
+    <p> Name: <%= customer.first_name %> <%= customer.last_name %>
+    <br>
+    Number of transactions: <%= customer.transactions.count %>
+    </p>
+<% end %>

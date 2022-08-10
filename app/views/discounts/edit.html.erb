@@ -1,0 +1,8 @@
+<%= form_with model: @merchants, url:  "/merchants/#{@merchant.id}/discounts/#{@discount.id}", method: :patch, local: true  do |form| %>
+  <%= form.label :precent %>
+  <%= form.text_field :precent %>
+  <%= form.label :amount %>
+  <%= form.text_field :amount %>
+  <%= form.hidden_field :merchant_id, value: @merchant.id %>
+  <%= form.submit "Update Discount" %>
+<% end %>

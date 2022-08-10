@@ -1,0 +1,10 @@
+<%= render partial: "discounts/holiday" %>
+<h1>Discount Index</h1>
+<%=link_to "Create A New Discount", "/merchants/#{@merchant.id}/discounts/new" %>
+<% @discounts.each do |discount| %>
+  <div id="discount-<%= discount.id %>">
+    <h3>Discount Precent <%= discount.precent %>%.
+    <%= discount.amount %> Items needed for discount </h3>
+  <%=link_to "Delete Discount", "/merchants/#{@merchant.id}/discounts/#{discount.id}", method: :delete %>
+    </div>
+<% end %>
