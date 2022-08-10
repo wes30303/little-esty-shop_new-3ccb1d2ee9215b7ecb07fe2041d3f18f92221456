@@ -73,8 +73,7 @@ RSpec.describe 'Discounts Show Page' do
     visit "/merchants/#{merchant1.id}/discounts/#{discount1.id}/edit"
     fill_in('precent', with: '55')
     fill_in('amount', with: '27')
-    save_and_open_page
-
+    
     click_button 'Update Discount'
 
     expect(page).to have_content(55)

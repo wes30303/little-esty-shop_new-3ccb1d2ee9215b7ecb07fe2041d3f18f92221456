@@ -3,7 +3,6 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show, :edit, :update, :new, :create]
   end
 
-  get '/', to: "welcome#index"
 
   get '/merchants/:merchant_id/invoices', to: 'merchant_invoices#index'
   get '/merchants/:merchant_id/invoices/:id', to: 'merchant_invoices#show'
@@ -17,13 +16,7 @@ Rails.application.routes.draw do
   get "/merchants/:merchant_id/discounts/:id/edit", to:'discounts#edit'
   patch '/merchants/:merchant_id/discounts/:id', to: 'discounts#update'
   delete "/merchants/:merchant_id/discounts/:id", to:'discounts#destroy'
-
-  get '/discounts', to: 'discounts#index'
-  get '/discounts/new', to: 'discounts#new'
-  post '/discounts', to: 'discounts#create'
-  get '/discounts/:id', to: 'discounts#show'
-  delete '/discounts/:id', to: 'discounts#destroy'
-
+ 
   get '/admin', to: 'admin#dashboard'
 
   get '/admin/invoices', to: 'admin#index'
