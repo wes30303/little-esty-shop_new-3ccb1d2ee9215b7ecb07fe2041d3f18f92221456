@@ -5,6 +5,7 @@
   <div id="discount-<%= discount.id %>">
     <h3>Discount Precent <%= discount.precent %>%.
     <%= discount.amount %> Items needed for discount </h3>
+  <%=link_to "View Discount", "/merchants/#{@merchant.id}/discounts/#{discount.id}" %>
   <%=link_to "Delete Discount", "/merchants/#{@merchant.id}/discounts/#{discount.id}", method: :delete %>
     </div>
 <% end %>

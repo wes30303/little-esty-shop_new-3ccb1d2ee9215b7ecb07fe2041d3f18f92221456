@@ -3,6 +3,7 @@ ruby '2.7.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.6'
+gem 'sassc-rails'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
@@ -32,6 +33,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 # Reduces boot times through caching; required in config/boot.rb
+source 'https://rubygems.org'
 gem 'bootsnap', '>= 1.1.0', require: false
   git_source(:github) do |repo_name|
     repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
