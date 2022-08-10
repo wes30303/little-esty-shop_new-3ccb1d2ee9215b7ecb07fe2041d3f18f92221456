@@ -19,7 +19,7 @@ RSpec.describe InvoiceItem do
     it { should validate_presence_of :status }
     it { should have_many(:discounts).through(:merchant) }
   end
-
+ 
 
   it "should be able find the best discount" do
     merchant1 = Merchant.create!(name: "Poke Retirement homes", status: "enabled")
