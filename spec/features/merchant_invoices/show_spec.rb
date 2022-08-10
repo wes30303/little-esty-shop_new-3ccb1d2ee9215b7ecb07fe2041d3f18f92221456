@@ -214,8 +214,9 @@ RSpec.describe 'merchants invoice show page', type: :feature do
     expect(page).to have_content("Total Discount Revenue: 800")
 
     expect(page).to have_link('View Discount')
-
+    save_and_open_page
     click_link('View Discount')
+
 
     expect(current_path).to eq("/merchants/#{merchant1.id}/discounts/#{discount1.id}")
 
